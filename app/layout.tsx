@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'DevKit — Developer & Designer Utility Suite',
+  title: 'Apex DevSuite — Developer & Designer Utility Suite',
   description:
     'A fast, dark-themed suite of developer and designer utilities: JSON to TypeScript, SVG/CSS pattern generator, Open Graph previewer, and a Markdown README editor.',
   generator: 'v0.app',

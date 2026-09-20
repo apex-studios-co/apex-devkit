@@ -1,8 +1,9 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Search, Wrench } from "lucide-react"
+import { Search } from "lucide-react"
 import { filterTools, type ToolId } from "@/lib/tools"
+import { ApexLogo } from "@/components/apex-logo"
 import { cn } from "@/lib/utils"
 
 interface SidebarProps {
@@ -16,13 +17,11 @@ export function Sidebar({ active, onSelect }: SidebarProps) {
 
   return (
     <aside className="flex h-full w-full flex-col gap-4 border-r border-sidebar-border bg-sidebar p-4">
-      <div className="flex items-center gap-2 px-1">
-        <div className="flex size-8 items-center justify-center rounded-lg bg-primary/15 text-primary">
-          <Wrench className="size-4" />
-        </div>
+      <div className="flex items-center gap-2.5 px-1">
+        <ApexLogo className="size-9 shrink-0" />
         <div className="leading-tight">
-          <p className="text-sm font-semibold text-sidebar-foreground">DevKit</p>
-          <p className="text-xs text-muted-foreground">Utility Suite</p>
+          <p className="text-sm font-semibold text-sidebar-foreground">Apex DevSuite</p>
+          <p className="text-xs text-muted-foreground">Developer &amp; Designer tools</p>
         </div>
       </div>
 

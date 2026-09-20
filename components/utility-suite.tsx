@@ -40,11 +40,19 @@ export function UtilitySuite() {
       {mobileOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
           <div
-            className="absolute inset-0 bg-black/60"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
-          <div className="absolute inset-y-0 left-0 w-72 max-w-[80%]">
+          <div className="absolute inset-y-0 left-0 w-[85%] max-w-80 shadow-2xl duration-200 animate-in slide-in-from-left">
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-3.5 right-3 z-10 inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
+              aria-label="Close tools menu"
+            >
+              <X className="size-4" />
+            </button>
             <Sidebar active={active} onSelect={handleSelect} />
           </div>
         </div>
@@ -55,32 +63,18 @@ export function UtilitySuite() {
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            className="inline-flex size-8 items-center justify-center rounded-lg border border-border text-muted-foreground hover:bg-muted md:hidden"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-border text-muted-foreground hover:bg-muted md:hidden"
+            aria-label="Open tools menu"
           >
-            {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+            <Menu className="size-4" />
           </button>
           <div className="min-w-0">
-            <h1 className="truncate text-base font-semibold">{activeTool.name}</h1>
+            <div className="flex items-center gap-2">
+              <activeTool.icon className="size-4 shrink-0 text-primary" aria-hidden="true" />
+              <h1 className="truncate text-base font-semibold">{activeTool.name}</h1>
+            </div>
             <p className="truncate text-xs text-muted-foreground">{activeTool.description}</p>
           </div>
-          <nav className="ml-auto hidden items-center gap-1 lg:flex" aria-label="Tool tabs">
-            {TOOLS.map((tool) => (
-              <button
-                key={tool.id}
-                type="button"
-                onClick={() => setActive(tool.id)}
-                className={cn(
-                  "rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
-                  tool.id === active
-                    ? "bg-secondary text-secondary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
-                )}
-              >
-                {tool.name}
-              </button>
-            ))}
-          </nav>
         </header>
 
         <main className="min-h-0 flex-1 overflow-auto p-4 md:p-6">

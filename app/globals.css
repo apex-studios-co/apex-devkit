@@ -161,3 +161,63 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* --- Apex animated logo --- */
+.apex-logo {
+  background: linear-gradient(140deg, oklch(0.32 0.12 292), oklch(0.22 0.03 285));
+  color: oklch(0.98 0.01 292);
+  box-shadow:
+    inset 0 0 0 1px oklch(1 0 0 / 12%),
+    0 6px 20px -8px oklch(0.62 0.19 292 / 55%);
+}
+
+.apex-logo-sheen {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    oklch(0.7 0.2 292 / 45%) 60deg,
+    transparent 140deg,
+    transparent 360deg
+  );
+  animation: apex-spin 4.5s linear infinite;
+}
+
+.apex-peak {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.apex-peak-front {
+  animation: apex-rise 3s ease-in-out infinite;
+}
+
+.apex-peak-back {
+  animation: apex-rise 3s ease-in-out infinite;
+  animation-delay: 0.35s;
+}
+
+@keyframes apex-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes apex-rise {
+  0%,
+  100% {
+    transform: translateY(1px) scaleY(0.94);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(-1px) scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apex-logo-sheen,
+  .apex-peak-front,
+  .apex-peak-back {
+    animation: none;
+  }
+}
