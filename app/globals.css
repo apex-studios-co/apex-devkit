@@ -58,7 +58,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.45 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -94,7 +94,7 @@
   --secondary: oklch(0.26 0.008 285);
   --secondary-foreground: oklch(0.97 0.002 285);
   --muted: oklch(0.24 0.007 285);
-  --muted-foreground: oklch(0.68 0.012 285);
+  --muted-foreground: oklch(0.76 0.014 285);
   --accent: oklch(0.28 0.03 292);
   --accent-foreground: oklch(0.97 0.002 285);
   --destructive: oklch(0.704 0.191 22.216);
@@ -130,7 +130,7 @@
     --secondary: oklch(0.269 0 0);
     --secondary-foreground: oklch(0.985 0 0);
     --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
+    --muted-foreground: oklch(0.76 0 0);
     --accent: oklch(0.269 0 0);
     --accent-foreground: oklch(0.985 0 0);
     --destructive: oklch(0.704 0.191 22.216);
@@ -159,6 +159,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Baseline keyboard focus indicator for interactive elements that don't
+     define their own visible focus ring (nav items, chips, icon buttons).
+     Components that manage focus with a custom ring set `outline-none`,
+     so this never doubles up. */
+  a:focus-visible,
+  button:focus-visible,
+  [role='button']:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
   }
 }
 
